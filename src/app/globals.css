@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+:root {
+  --page-background: #0F0F0F;
+  --light-black: #0D0D0D;
+  --gray-background: #141414;
+  --black-gray-background: #101010;
+  --light-gray-background: #1E1E1E;
+  --blue: #0A3062;
+  --light-blue: #1C76DB;
+  --green: #094A00;
+  --light-red: #8b2618;
+  --secondary-text: #626262;
+}
+
+@theme inline {
+  --color-page-background: var(--page-background);
+  --color-light-black: var(--light-black);
+  --color-gray-background: var(--gray-background);
+  --color-black-gray-background: var(--black-gray-background);
+  --color-light-gray-background: var(--light-gray-background);
+  --color-blue: var(--blue);
+  --color-light-blue: var(--light-blue);
+  --color-green: var(--green);
+  --color-light-red: var(--light-red);
+  --color-secondary-text: var(--secondary-text);
+  --font-lexend: var(--font-lexend);
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-lexend) sans-serif;
+}
+
+/* ESTILOS PARA EDITAR LA BARRA DE SCROLL EN DISTINTOS NAVEGADORES */
+/* Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--gray-background);
+  border-radius: 9999px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--blue);
+  border-radius: 9999px;
+  border: 2px solid var(--gray-background);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--light-blue);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue) var(--gray-background);
+}
