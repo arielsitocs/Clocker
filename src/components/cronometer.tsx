@@ -31,7 +31,7 @@ export default function Alarms() {
             }
         }, 10);
 
-        // Limpiamos el timeout anterior antes de crear el nuevo (evita colapsos)
+        // Limpiamos el timeout anterior antes de crear el nuevo (evita colapsos) // 
         return () => clearTimeout(timerId);
 
         // Se vuelve a ejecutar el codigo cada vez que una de estas variables cambie //
