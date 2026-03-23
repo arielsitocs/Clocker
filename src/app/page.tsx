@@ -3,10 +3,10 @@
 import { useState } from "react";
 
 import Navigation from "../components/navigation";
-import WorldClock from "../components/world_clock";
+import Temporizer from "../components/temporizer";
 
 export default function Home() {
-  const [section, setSection] = useState(<WorldClock />);
+  const [section, setSection] = useState(<Temporizer />);
 
   return (
     <div className="flex justify-center items-center w-full h-screen bg-page-background">

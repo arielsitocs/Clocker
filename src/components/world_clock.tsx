@@ -9,6 +9,8 @@ import Loader from "./ui/Loader";
 export default function WorldClock() {
     const [timezones, setTimezones] = useState<any[]>([]);
     const [userTimezone, setUserTimezone] = useState<any>('');
+    const [search, setSearch] = useState('');
+    const [filteredTimeZones, setFilteredTimeZones] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
 
     const formatDate = (date: string) => {
@@ -55,6 +57,11 @@ export default function WorldClock() {
         }
     }
 
+    // Filtro para la barra de busqueda //
+    const filteredTimezones = timezones?.filter((tz: string) =>
+        tz.toLowerCase().includes(search.toLowerCase())
+    );
+
     useEffect(() => {
         getTimezones();
     }, []);
@@ -73,13 +80,13 @@ export default function WorldClock() {
                     <div className="flex flex-col items-center w-[95%] md:w-[75%] rounded-[10px] p-2 max-h-[570px] md:max-h-[500px] overflow-y-auto text-white font-semibold mt-2 bg-page-background gap-3">
                         <div className="w-full">
                             <input type="text" placeholder="Buscar Continente/Ciudad..." className="w-full p-2 text-[clamp(15px,3vw,18px)] rounded-[5px] bg-light-black
-                        bg-[url('/search_icon.svg')] bg-no-repeat bg-[left_6px_center] pl-10 bg-[length:32px] font-light" />
+                        bg-[url('/search_icon.svg')] bg-no-repeat bg-[left_6px_center] pl-10 bg-[length:32px] font-light" onChange={(e) => setSearch(e.target.value)} />
                         </div>
                         {
                             loading ?
                                 <Loader state={loading} setState={setLoading} />
                                 :
-                                timezones?.map((tzString: string) => (
+                                filteredTimezones?.map((tzString: string) => (
                                     <Timezone key={tzString} id={tzString} timezone={tzString} datetime={getTimeForTimezone(tzString)} />
                                 ))
                         }
